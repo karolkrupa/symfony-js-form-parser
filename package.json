@@ -1,0 +1,23 @@
+{
+  "name": "symfony-js-form-parser",
+  "version": "0.0.1",
+  "description": "Symfony form errors javascript parser",
+  "main": "dist/ErrorResponse.js",
+  "types": "dist/ErrorResponse.d.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register tests/*"
+  },
+  "author": "Karol Krupa (karo2krupa@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2"
+  }
+}
