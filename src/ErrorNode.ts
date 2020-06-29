@@ -7,6 +7,14 @@ export type NodeObject = {
     children?: NodeChildrenObject
 }
 
+export type FlattenErrorNode = {
+    [key: string]: string[]
+}
+
+export type SimpleFlattenErrorNode = {
+    [key: string]: string | null
+}
+
 export class ErrorNode {
     private _children: {
         [name: string]: ErrorNode
@@ -20,8 +28,6 @@ export class ErrorNode {
         this.parse(node)
     }
 
-
-
     public hasErrors(): boolean {
         return this.errors.length > 0
     }
@@ -34,8 +40,8 @@ export class ErrorNode {
         return this.name
     }
 
-    public getFlattenObject(): {[name: string]: string} {
-        let flattenObject: {[name: string]: string} = {}
+    public getFlattenObject(): FlattenErrorNode {
+        let flattenObject: FlattenErrorNode = {}
         for(let key of Object.keys(this._children)) {
             let childObj = this._children[key].getFlattenObject()
 
@@ -49,9 +55,32 @@ export class ErrorNode {
         if(this.rootNode) return flattenObject
 
         if(!this.rootNode && this.errors.length > 0) {
+            flattenObject[this.name] = this.errors
+        }else {
+            flattenObject[this.name] = []
+        }
+
+        return flattenObject
+    }
+
+    public getSimpleFlattenObject(): SimpleFlattenErrorNode {
+        let flattenObject: SimpleFlattenErrorNode = {}
+        for(let key of Object.keys(this._children)) {
+            let childObj = this._children[key].getSimpleFlattenObject()
+
+            for(let key1 of Object.keys(childObj)) {
+                let key = this.name + '.' + key1
+                if(this.rootNode) key = key1
+                flattenObject[key] = childObj[key1]
+            }
+        }
+
+        if(this.rootNode) return flattenObject
+
+        if(!this.rootNode && this.errors.length > 0) {
             flattenObject[this.name] = this.errors[0]
         }else {
-            flattenObject[this.name] = ''
+            flattenObject[this.name] = null
         }
 
         return flattenObject

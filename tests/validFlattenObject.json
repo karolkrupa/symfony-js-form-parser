@@ -1,0 +1,24 @@
+{
+  "errors": [],
+  "code": 400,
+  "message": "Validation Failed",
+  "nodes": {
+    "comment": [],
+    "customer": ["This value is not valid."],
+    "return_address.postal_code": [],
+    "return_address.street": [],
+    "return_address.town": [],
+    "return_address.type": [],
+    "return_address.name": [],
+    "return_address.first_name": [],
+    "return_address.last_name": [],
+    "return_address.email": [],
+    "return_address.phone_number": [],
+    "return_address.customer": [],
+    "return_address.country": [],
+    "return_address": [],
+    "order_items": ["This value is not valid."],
+    "status": [],
+    "parcels": []
+  }
+}

@@ -1,9 +1,23 @@
-import {ErrorNode, NodeObject} from "./ErrorNode";
+import {ErrorNode, FlattenErrorNode, NodeObject, SimpleFlattenErrorNode} from "./ErrorNode";
 
 type FormErrorResponse = {
     code: Number
     message: string
     errors: NodeObject
+}
+
+type FlattenErrors = {
+    code: Number,
+    message: string | null,
+    errors: string[],
+    nodes: FlattenErrorNode
+}
+
+type SimpleFlattenErrors = {
+    code: Number,
+    message: string | null,
+    error: string | null,
+    nodes: SimpleFlattenErrorNode
 }
 
 export class ErrorResponse {
@@ -18,10 +32,21 @@ export class ErrorResponse {
         this._message = response.message
     }
 
-    public getFlattenObject(): { [name: string]: string | { [name: string]: string } } {
+    public getFlattenObject(): FlattenErrors {
         return {
-            error: this.rootNode.hasErrors() ? this.rootNode.getErrors()[0] : '',
+            code: this.code,
+            message: this.message,
+            errors: this.rootNode.getErrors(),
             nodes: this.rootNode.getFlattenObject()
+        }
+    }
+
+    public getSimpleFlattenObject(): SimpleFlattenErrors {
+        return {
+            code: this.code,
+            message: this.message,
+            error: this.rootNode.hasErrors() ? this.rootNode.getErrors()[0] : null,
+            nodes: this.rootNode.getSimpleFlattenObject()
         }
     }
 
