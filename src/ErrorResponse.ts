@@ -27,9 +27,9 @@ export class ErrorResponse {
     private rootNode: ErrorNode
 
     constructor(response: FormErrorResponse) {
-        this.rootNode = new ErrorNode(response.errors)
-        this._code = response.code
-        this._message = response.message
+        if(response.errors) this.rootNode = new ErrorNode(response.errors)
+        this._code = response.code? response.code : null
+        this._message = response.message? response.message : null
     }
 
     public getFlattenObject(): FlattenErrors {
