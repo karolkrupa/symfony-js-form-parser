@@ -3,6 +3,12 @@
 This library provides a simple solution for analyzing symfony form error responses.
 Thanks to this you can easily display errors in the form, etc.
 
+## Instalation
+
+```bash
+$ npm install symfony-js-form-parser
+```
+
 ## Example
 
 With this library you can easily convert this type of json:
