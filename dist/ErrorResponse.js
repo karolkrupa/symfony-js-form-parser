@@ -4,9 +4,10 @@ exports.ErrorResponse = void 0;
 var ErrorNode_1 = require("./ErrorNode");
 var ErrorResponse = /** @class */ (function () {
     function ErrorResponse(response) {
-        this.rootNode = new ErrorNode_1.ErrorNode(response.errors);
-        this._code = response.code;
-        this._message = response.message;
+        if (response.errors)
+            this.rootNode = new ErrorNode_1.ErrorNode(response.errors);
+        this._code = response.code ? response.code : null;
+        this._message = response.message ? response.message : null;
     }
     ErrorResponse.prototype.getFlattenObject = function () {
         return {
