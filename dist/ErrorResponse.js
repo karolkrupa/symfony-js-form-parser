@@ -6,6 +6,8 @@ var ErrorResponse = /** @class */ (function () {
     function ErrorResponse(response) {
         if (response.errors)
             this.rootNode = new ErrorNode_1.ErrorNode(response.errors);
+        else
+            this.rootNode = new ErrorNode_1.ErrorNode();
         this._code = response.code ? response.code : null;
         this._message = response.message ? response.message : null;
     }

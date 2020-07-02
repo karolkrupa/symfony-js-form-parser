@@ -14,6 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ErrorNode = void 0;
 var ErrorNode = /** @class */ (function () {
     function ErrorNode(node, name) {
+        if (node === void 0) { node = {}; }
         if (name === void 0) { name = null; }
         this._children = {};
         this.errors = [];

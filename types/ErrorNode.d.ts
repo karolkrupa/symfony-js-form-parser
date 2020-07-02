@@ -15,7 +15,7 @@ export declare class ErrorNode {
     private _children;
     readonly name: string;
     private errors;
-    constructor(node: NodeObject, name?: string | null);
+    constructor(node?: NodeObject, name?: string | null);
     hasErrors(): boolean;
     getErrors(): string[];
     getName(): string;

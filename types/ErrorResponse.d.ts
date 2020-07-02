@@ -1,8 +1,8 @@
 import { ErrorNode, FlattenErrorNode, NodeObject, SimpleFlattenErrorNode } from "./ErrorNode";
 declare type FormErrorResponse = {
-    code: Number;
-    message: string;
-    errors: NodeObject;
+    code?: Number;
+    message?: string;
+    errors?: NodeObject;
 };
 declare type FlattenErrors = {
     code: Number;
