@@ -1,8 +1,8 @@
 {
   "name": "symfony-js-form-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Symfony form errors javascript parser",
-  "main": "src/ErrorResponse.ts",
+  "main": "dist/ErrorResponse.js",
   "types": "types/ErrorResponse.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register tests/*"
