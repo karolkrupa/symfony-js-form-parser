@@ -23,7 +23,7 @@ export class ErrorNode {
     readonly name: string
     private errors: string[] = []
 
-    constructor(node: NodeObject, name: string|null = null) {
+    constructor(node: NodeObject = {}, name: string|null = null) {
         this.name = name
         this.parse(node)
     }

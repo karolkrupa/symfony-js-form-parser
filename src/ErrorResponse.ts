@@ -1,9 +1,9 @@
 import {ErrorNode, FlattenErrorNode, NodeObject, SimpleFlattenErrorNode} from "./ErrorNode";
 
 type FormErrorResponse = {
-    code: Number
-    message: string
-    errors: NodeObject
+    code?: Number
+    message?: string
+    errors?: NodeObject
 }
 
 type FlattenErrors = {
@@ -28,6 +28,7 @@ export class ErrorResponse {
 
     constructor(response: FormErrorResponse) {
         if(response.errors) this.rootNode = new ErrorNode(response.errors)
+        else this.rootNode = new ErrorNode()
         this._code = response.code? response.code : null
         this._message = response.message? response.message : null
     }

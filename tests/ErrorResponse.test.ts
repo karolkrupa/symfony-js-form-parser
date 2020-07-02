@@ -27,6 +27,19 @@ describe('ErrorResponse', function () {
 
         expect(flattenObject).to.deep.equal(validSimpleFlattenObject)
     })
+
+    it('should parse empty object', function () {
+        let errorResponse = new ErrorResponse({});
+
+        let flattenObject = errorResponse.getSimpleFlattenObject();
+
+        expect(flattenObject).to.deep.equal({
+            code: null,
+            message: null,
+            error: null,
+            nodes: {}
+        })
+    })
 })
 
 
