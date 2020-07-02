@@ -1,6 +1,6 @@
 {
   "name": "symfony-js-form-parser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Symfony form errors javascript parser",
   "main": "dist/ErrorResponse.js",
   "types": "types/ErrorResponse.d.ts",
