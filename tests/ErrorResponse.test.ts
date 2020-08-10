@@ -40,6 +40,17 @@ describe('ErrorResponse', function () {
             nodes: {}
         })
     })
+
+    it('should create ErrorResponse object from parse method', function () {
+        let flattenObject = ErrorResponse.parse({}).getSimpleFlattenObject();
+
+        expect(flattenObject).to.deep.equal({
+            code: null,
+            message: null,
+            error: null,
+            nodes: {}
+        })
+    })
 })
 
 

@@ -1,19 +1,19 @@
 import {ErrorNode, FlattenErrorNode, NodeObject, SimpleFlattenErrorNode} from "./ErrorNode";
 
-type FormErrorResponse = {
+export type FormErrorResponse = {
     code?: Number
     message?: string
     errors?: NodeObject
 }
 
-type FlattenErrors = {
+export type FlattenErrors = {
     code: Number,
     message: string | null,
     errors: string[],
     nodes: FlattenErrorNode
 }
 
-type SimpleFlattenErrors = {
+export type SimpleFlattenErrors = {
     code: Number,
     message: string | null,
     error: string | null,
@@ -25,6 +25,10 @@ export class ErrorResponse {
     private readonly _message: string
 
     private rootNode: ErrorNode
+
+    static parse(response: FormErrorResponse): ErrorResponse {
+        return new ErrorResponse(response)
+    }
 
     constructor(response: FormErrorResponse) {
         if(response.errors) this.rootNode = new ErrorNode(response.errors)
@@ -65,3 +69,5 @@ export class ErrorResponse {
         return this.rootNode.children
     }
 }
+
+export default ErrorResponse

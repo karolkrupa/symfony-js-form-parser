@@ -11,6 +11,9 @@ var ErrorResponse = /** @class */ (function () {
         this._code = response.code ? response.code : null;
         this._message = response.message ? response.message : null;
     }
+    ErrorResponse.parse = function (response) {
+        return new ErrorResponse(response);
+    };
     ErrorResponse.prototype.getFlattenObject = function () {
         return {
             code: this.code,
@@ -51,4 +54,5 @@ var ErrorResponse = /** @class */ (function () {
     return ErrorResponse;
 }());
 exports.ErrorResponse = ErrorResponse;
+exports.default = ErrorResponse;
 //# sourceMappingURL=ErrorResponse.js.map

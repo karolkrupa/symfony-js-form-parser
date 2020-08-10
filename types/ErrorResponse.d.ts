@@ -1,16 +1,16 @@
 import { ErrorNode, FlattenErrorNode, NodeObject, SimpleFlattenErrorNode } from "./ErrorNode";
-declare type FormErrorResponse = {
+export declare type FormErrorResponse = {
     code?: Number;
     message?: string;
     errors?: NodeObject;
 };
-declare type FlattenErrors = {
+export declare type FlattenErrors = {
     code: Number;
     message: string | null;
     errors: string[];
     nodes: FlattenErrorNode;
 };
-declare type SimpleFlattenErrors = {
+export declare type SimpleFlattenErrors = {
     code: Number;
     message: string | null;
     error: string | null;
@@ -20,6 +20,7 @@ export declare class ErrorResponse {
     private readonly _code;
     private readonly _message;
     private rootNode;
+    static parse(response: FormErrorResponse): ErrorResponse;
     constructor(response: FormErrorResponse);
     getFlattenObject(): FlattenErrors;
     getSimpleFlattenObject(): SimpleFlattenErrors;
@@ -29,4 +30,4 @@ export declare class ErrorResponse {
         [name: string]: ErrorNode;
     };
 }
-export {};
+export default ErrorResponse;
