@@ -110,7 +110,7 @@ or this:
 
 ## Usage
 ```typescript
-import ErrorResponse from 'symfony-js-form-parser'
+import {ErrorResponse} from 'symfony-js-form-parser'
 
 let simpleResponse = {
     "code": 400,
